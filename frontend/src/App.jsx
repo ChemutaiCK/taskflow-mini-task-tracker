@@ -103,17 +103,19 @@ export default function App() {
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
 
-        <main className="flex-1 overflow-y-auto p-6 lg:p-8">
+        <main className="flex-1 overflow-y-auto bg-background p-6 lg:p-8">
           <div className="mx-auto max-w-6xl space-y-6">
             {/* Overview header */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-                  Overview
+                  Dashboard Overview
                 </p>
-                <h1 className="mt-1 text-2xl font-semibold text-ink">Welcome Back, Cynthia</h1>
-                <p className="mt-1 text-sm text-ink-secondary">
-                  Here&rsquo;s what&rsquo;s happening with your tasks.
+                <h1 className="mt-1 text-3xl font-bold tracking-tight text-ink">
+                  Welcome back, Cynthia
+                </h1>
+                <p className="mt-2 text-sm text-ink-secondary">
+                  Here's an overview of your tasks and current progress.
                 </p>
               </div>
 
@@ -136,8 +138,7 @@ export default function App() {
 
             {/* Tasks card */}
             <div className="rounded-lg border border-border bg-surface shadow-subtle">
-              <div className="flex flex-col gap-4 border-b border-border px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
+              <div className="flex flex-col gap-4 border-b border-border bg-surface px-6 py-5 sm:flex-row sm:items-center sm:justify-between"><div>
                   <h2 className="text-base font-semibold text-ink">Tasks</h2>
                   {loadState === "ready" && (
                     <p className="mt-0.5 text-xs text-ink-secondary">
