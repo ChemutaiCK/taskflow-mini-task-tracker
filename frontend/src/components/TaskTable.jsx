@@ -28,7 +28,7 @@ export default function TaskTable({ tasks, onEdit, onDelete }) {
                 >
                   <td
                     className={`px-5 py-4 font-medium ${
-                      isDone ? "text-ink-secondary line-through" : "text-ink"
+                      isDone ? "text-ink-secondary" : "text-ink"
                     }`}
                   >
                     {task.title}
