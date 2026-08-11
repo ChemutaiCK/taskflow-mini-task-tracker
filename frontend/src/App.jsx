@@ -111,7 +111,7 @@ export default function App() {
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">
                   Overview
                 </p>
-                <h1 className="mt-1 text-2xl font-semibold text-ink">Welcome back, Cynthia</h1>
+                <h1 className="mt-1 text-2xl font-semibold text-ink">Welcome Back, Cynthia</h1>
                 <p className="mt-1 text-sm text-ink-secondary">
                   Here&rsquo;s what&rsquo;s happening with your tasks.
                 </p>
