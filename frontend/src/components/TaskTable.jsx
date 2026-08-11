@@ -1,44 +1,60 @@
 import StatusBadge from "./StatusBadge";
 import TaskCard from "./TaskCard";
+import { IconPencil, IconTrash } from "./Icons";
 import { formatDate } from "../utils/formatDate";
 
 export default function TaskTable({ tasks, onEdit, onDelete }) {
   return (
     <>
       {/* Desktop table */}
-      <div className="hidden overflow-hidden rounded-lg border border-slate-200 bg-white shadow-subtle md:block">
+      <div className="hidden overflow-hidden rounded-lg border border-border md:block">
         <table className="w-full text-left text-sm">
           <thead>
-            <tr className="border-b border-slate-200 bg-slate-50 text-xs font-medium uppercase tracking-wide text-ink/50">
-              <th className="px-4 py-3 font-medium">Task</th>
-              <th className="px-4 py-3 font-medium">Description</th>
-              <th className="px-4 py-3 font-medium">Status</th>
-              <th className="px-4 py-3 font-medium">Created</th>
-              <th className="px-4 py-3 font-medium text-right">Actions</th>
+            <tr className="border-b border-border bg-background text-xs font-semibold uppercase tracking-wide text-ink-secondary">
+              <th className="px-5 py-3 font-semibold">Task</th>
+              <th className="px-5 py-3 font-semibold">Description</th>
+              <th className="px-5 py-3 font-semibold">Status</th>
+              <th className="px-5 py-3 font-semibold">Created</th>
+              <th className="px-5 py-3 text-right font-semibold">Actions</th>
             </tr>
           </thead>
           <tbody>
             {tasks.map((task) => {
               const isDone = task.status === "Done";
               return (
-                <tr key={task.id} className="border-b border-slate-100 last:border-0 hover:bg-slate-50/60">
-                  <td className={`px-4 py-3 font-medium ${isDone ? "text-ink/50 line-through" : "text-ink"}`}>
+                <tr
+                  key={task.id}
+                  className="border-b border-border last:border-0 hover:bg-background/60"
+                >
+                  <td
+                    className={`px-5 py-4 font-medium ${
+                      isDone ? "text-ink-secondary line-through" : "text-ink"
+                    }`}
+                  >
                     {task.title}
                   </td>
-                  <td className={`max-w-xs truncate px-4 py-3 ${isDone ? "text-ink/40" : "text-ink/70"}`}>
+                  <td className={`max-w-xs truncate px-5 py-4 ${isDone ? "text-ink-secondary/70" : "text-ink-secondary"}`}>
                     {task.description || "—"}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-5 py-4">
                     <StatusBadge status={task.status} />
                   </td>
-                  <td className="px-4 py-3 text-ink/60">{formatDate(task.created_at)}</td>
-                  <td className="px-4 py-3">
-                    <div className="flex justify-end gap-3 font-medium">
-                      <button onClick={() => onEdit(task)} className="text-primary hover:text-primary-dark">
-                        Edit
+                  <td className="px-5 py-4 text-ink-secondary">{formatDate(task.created_at)}</td>
+                  <td className="px-5 py-4">
+                    <div className="flex justify-end gap-1">
+                      <button
+                        onClick={() => onEdit(task)}
+                        aria-label={`Edit ${task.title}`}
+                        className="flex h-8 w-8 items-center justify-center rounded-md text-ink-secondary hover:bg-primary/10 hover:text-primary"
+                      >
+                        <IconPencil className="h-4 w-4" />
                       </button>
-                      <button onClick={() => onDelete(task)} className="text-red-600 hover:text-red-700">
-                        Delete
+                      <button
+                        onClick={() => onDelete(task)}
+                        aria-label={`Delete ${task.title}`}
+                        className="flex h-8 w-8 items-center justify-center rounded-md text-ink-secondary hover:bg-danger/10 hover:text-danger"
+                      >
+                        <IconTrash className="h-4 w-4" />
                       </button>
                     </div>
                   </td>

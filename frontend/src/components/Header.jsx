@@ -1,38 +1,40 @@
-export default function Header() {
+import { IconSearch, IconBell, IconChevronDown } from "./Icons";
+
+export default function Header({ searchTerm, onSearchChange }) {
   return (
-    <header className="flex h-14 items-center justify-between bg-navy px-6 text-white">
-      <div className="flex items-center gap-2">
-        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-sm font-bold">
+    <header className="flex h-16 shrink-0 items-center gap-6 border-b border-border bg-surface px-6">
+      <div className="flex items-center gap-2.5">
+        <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-sm font-bold text-white">
           T
         </div>
-        <span className="text-[15px] font-semibold tracking-tight">TaskFlow</span>
+        <span className="text-[15px] font-semibold tracking-tight text-ink">TaskFlow</span>
       </div>
 
-      <div className="hidden max-w-sm flex-1 px-8 md:block">
+      <div className="mx-auto w-full max-w-md">
         <div className="relative">
-          <svg
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="11" cy="11" r="7" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
+          <IconSearch className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-secondary" />
           <input
             type="text"
-            placeholder="Search..."
-            disabled
-            className="w-full rounded-md border border-navy-light bg-navy-light py-1.5 pl-9 pr-3 text-sm text-slate-300 placeholder:text-slate-500 focus:outline-none"
+            value={searchTerm}
+            onChange={(event) => onSearchChange(event.target.value)}
+            placeholder="Search tasks..."
+            className="w-full rounded-md border border-border bg-background py-2 pl-10 pr-3 text-sm text-ink placeholder:text-ink-secondary focus:border-primary focus:bg-surface focus:outline-none focus:ring-2 focus:ring-primary/20"
           />
         </div>
       </div>
 
-      <div className="flex items-center gap-4 text-sm text-slate-300">
-        <button className="hidden hover:text-white sm:block">Help</button>
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-white">
-          CN
+      <div className="flex shrink-0 items-center gap-4">
+        <button
+          aria-label="Notifications"
+          className="relative text-ink-secondary hover:text-ink"
+        >
+          <IconBell className="h-5 w-5" />
+        </button>
+        <div className="flex items-center gap-1.5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-dark text-xs font-semibold text-white">
+            CK
+          </div>
+          <IconChevronDown className="hidden h-4 w-4 text-ink-secondary sm:block" />
         </div>
       </div>
     </header>

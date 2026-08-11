@@ -4,12 +4,12 @@
 
 body {
   font-family: "Inter", system-ui, sans-serif;
-  background-color: #f5fafc;
-  color: #384960;
+  background-color: #f5f8fa;
+  color: #172033;
 }
 
 /* Visible keyboard focus for accessibility */
 :focus-visible {
-  outline: 2px solid #3778a4;
+  outline: 2px solid #378ba4;
   outline-offset: 2px;
 }
